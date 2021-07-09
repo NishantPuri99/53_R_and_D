@@ -40,56 +40,6 @@ class MainDatabase {
       )
       ''');
 
-    Future<Track> addTrack(Track track) async {
-      final db = await instance.database;
-      final id = await db.insert(tableTracks, track.toJson());
-      return track.copy(id: id);
-    }
-
-    Future<Track> getTrack(int trackID) async {
-      final db = await instance.database;
-      final maps = await db.query(
-        tableTracks,
-        columns: TrackFields.values,
-        where: '${TrackFields.id} = ?',
-        whereArgs: [trackID],
-      );
-
-      if (maps.isNotEmpty) {
-        return Track.fromJson(maps.first);
-      } else {
-        throw Exception('$trackID not found');
-      }
-    }
-
-    Future<List<Track>> getAllTracks() async {
-      final db = await instance.database;
-
-      final result = await db.query(tableTracks);
-
-      return result.map((json) => Track.fromJson(json)).toList();
-    }
-
-    Future<int> updateTrack(Track track) async {
-      final db = await instance.database;
-
-      return db.update(tableTracks, track.toJson(),
-          where: '${TrackFields.info} = ?', whereArgs: [track.info]);
-    }
-
-    Future<int> deleteTrack(int trackID) async {
-      final db = await instance.database;
-
-      return await db.delete(tableTracks,
-          where: '${TrackFields.id} = ?', whereArgs: [trackID]);
-    }
-
-    Future<void> deleteTableTrack() async {
-      final db = await instance.database;
-      return await db.execute('DELETE FROM $tableTracks');
-    }
-
-    //User table
     await db.execute('''
       CREATE TABLE $tableUser
       (
@@ -107,48 +57,6 @@ class MainDatabase {
       )
       ''');
 
-    Future<User> addUser(User user) async {
-      final db = await instance.database;
-      final id = await db.insert(tableUser, user.toJson());
-      return user.copy(id: id);
-    }
-
-    Future<User> getUser(int userID) async {
-      final db = await instance.database;
-      final maps = await db.query(
-        tableUser,
-        columns: UserFields.values,
-        where: '${UserFields.id} = ?',
-        whereArgs: [userID],
-      );
-
-      if (maps.isNotEmpty) {
-        return User.fromJson(maps.first);
-      } else {
-        throw Exception('$userID not found');
-      }
-    }
-
-    Future<int> updateUser(User user) async {
-      final db = await instance.database;
-
-      return db.update(tableUser, user.toJson(),
-          where: '${UserFields.id} = ?', whereArgs: [user.id]);
-    }
-
-    Future<int> deleteUser(int userID) async {
-      final db = await instance.database;
-
-      return await db.delete(tableUser,
-          where: '${UserFields.id} = ?', whereArgs: [userID]);
-    }
-
-    Future<void> deleteTableUser() async {
-      final db = await instance.database;
-      return await db.execute('DELETE FROM $tableUser');
-    }
-
-    //Meditation table
     await db.execute('''
       CREATE TABLE $tableMeditation
       (
@@ -160,56 +68,6 @@ class MainDatabase {
       )
       ''');
 
-    Future<Meditation> addMeditation(Meditation meditation) async {
-      final db = await instance.database;
-      final id = await db.insert(tableMeditation, meditation.toJson());
-      return meditation.copy(id: id);
-    }
-
-    Future<Meditation> getMeditation(int id) async {
-      final db = await instance.database;
-      final maps = await db.query(
-        tableTracks,
-        columns: MeditationFields.values,
-        where: '${MeditationFields.id} = ?',
-        whereArgs: [id],
-      );
-
-      if (maps.isNotEmpty) {
-        return Meditation.fromJson(maps.first);
-      } else {
-        throw Exception('$id not found');
-      }
-    }
-
-    Future<List<Meditation>> getAllMeditations() async {
-      final db = await instance.database;
-
-      final result = await db.query(tableMeditation);
-
-      return result.map((json) => Meditation.fromJson(json)).toList();
-    }
-
-    Future<int> updateMeditation(Meditation meditation) async {
-      final db = await instance.database;
-
-      return db.update(tableMeditation, meditation.toJson(),
-          where: '${MeditationFields.id} = ?', whereArgs: [meditation.id]);
-    }
-
-    Future<int> deleteMeditation(int id) async {
-      final db = await instance.database;
-
-      return await db.delete(tableMeditation,
-          where: '${MeditationFields.id} = ?', whereArgs: [id]);
-    }
-
-    Future<void> deleteTableMeditation() async {
-      final db = await instance.database;
-      return await db.execute('DELETE FROM $tableMeditation');
-    }
-
-    //Running table
     await db.execute('''
     CREATE TABLE
     (
@@ -221,56 +79,6 @@ class MainDatabase {
     )
     ''');
 
-    Future<Running> addRunning(Running running) async {
-      final db = await instance.database;
-      final id = await db.insert(tableRunning, running.toJson());
-      return running.copy(id: id);
-    }
-
-    Future<Running> getRunning(int id) async {
-      final db = await instance.database;
-      final maps = await db.query(
-        tableRunning,
-        columns: RunningFields.values,
-        where: '${RunningFields.id} = ?',
-        whereArgs: [id],
-      );
-
-      if (maps.isNotEmpty) {
-        return Running.fromJson(maps.first);
-      } else {
-        throw Exception('$id not found');
-      }
-    }
-
-    Future<List<Running>> getAllRunning() async {
-      final db = await instance.database;
-
-      final result = await db.query(tableRunning);
-
-      return result.map((json) => Running.fromJson(json)).toList();
-    }
-
-    Future<int> updateRunning(Running running) async {
-      final db = await instance.database;
-
-      return db.update(tableRunning, running.toJson(),
-          where: '${RunningFields.id} = ?', whereArgs: [running.id]);
-    }
-
-    Future<int> deleteRunning(int id) async {
-      final db = await instance.database;
-
-      return await db.delete(tableRunning,
-          where: '${RunningFields.id} = ?', whereArgs: [id]);
-    }
-
-    Future<void> deleteTableRunning() async {
-      final db = await instance.database;
-      return await db.execute('DELETE FROM $tableRunning');
-    }
-
-    //Macros
     await db.execute('''
     CREATE TABLE $tableMacro
     (
@@ -283,55 +91,251 @@ class MainDatabase {
       ${MacroFields.date} TEXT
     )
     ''');
+  }
 
-    Future<Macro> addMacro(Macro macro) async {
-      final db = await instance.database;
-      final id = await db.insert(tableMacro, macro.toJson());
-      return macro.copy(id: id);
+  Future<Track> addTrack(Track track) async {
+    final db = await instance.database;
+    final id = await db.insert(tableTracks, track.toJson());
+    return track.copy(id: id);
+  }
+
+  Future<Track> getTrack(int trackID) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableTracks,
+      columns: TrackFields.values,
+      where: '${TrackFields.id} = ?',
+      whereArgs: [trackID],
+    );
+
+    if (maps.isNotEmpty) {
+      return Track.fromJson(maps.first);
+    } else {
+      throw Exception('$trackID not found');
     }
+  }
 
-    Future<Macro> getMacro(int id) async {
-      final db = await instance.database;
-      final maps = await db.query(
-        tableMacro,
-        columns: MacroFields.values,
-        where: '${MacroFields.id} = ?',
-        whereArgs: [id],
-      );
+  Future<List<Track>> getAllTracks() async {
+    final db = await instance.database;
 
-      if (maps.isNotEmpty) {
-        return Macro.fromJson(maps.first);
-      } else {
-        throw Exception('$id not found');
-      }
+    final result = await db.query(tableTracks);
+
+    return result.map((json) => Track.fromJson(json)).toList();
+  }
+
+  Future<int> updateTrack(Track track) async {
+    final db = await instance.database;
+
+    return db.update(tableTracks, track.toJson(),
+        where: '${TrackFields.info} = ?', whereArgs: [track.info]);
+  }
+
+  Future<int> deleteTrack(int trackID) async {
+    final db = await instance.database;
+
+    return await db.delete(tableTracks,
+        where: '${TrackFields.id} = ?', whereArgs: [trackID]);
+  }
+
+  Future<void> deleteTableTrack() async {
+    final db = await instance.database;
+    return await db.execute('DELETE FROM $tableTracks');
+  }
+
+  //User table
+
+  Future<User> addUser(User user) async {
+    final db = await instance.database;
+    final id = await db.insert(tableUser, user.toJson());
+    return user.copy(id: id);
+  }
+
+  Future<User> getUser(int userID) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableUser,
+      columns: UserFields.values,
+      where: '${UserFields.id} = ?',
+      whereArgs: [userID],
+    );
+
+    if (maps.isNotEmpty) {
+      return User.fromJson(maps.first);
+    } else {
+      throw Exception('$userID not found');
     }
+  }
 
-    Future<List<Macro>> getAllMacro() async {
-      final db = await instance.database;
+  Future<int> updateUser(User user) async {
+    final db = await instance.database;
 
-      final result = await db.query(tableMacro);
+    return db.update(tableUser, user.toJson(),
+        where: '${UserFields.id} = ?', whereArgs: [user.id]);
+  }
 
-      return result.map((json) => Macro.fromJson(json)).toList();
+  Future<int> deleteUser(int userID) async {
+    final db = await instance.database;
+
+    return await db
+        .delete(tableUser, where: '${UserFields.id} = ?', whereArgs: [userID]);
+  }
+
+  Future<void> deleteTableUser() async {
+    final db = await instance.database;
+    return await db.execute('DELETE FROM $tableUser');
+  }
+
+  //Meditation table
+
+  Future<Meditation> addMeditation(Meditation meditation) async {
+    final db = await instance.database;
+    final id = await db.insert(tableMeditation, meditation.toJson());
+    return meditation.copy(id: id);
+  }
+
+  Future<Meditation> getMeditation(int id) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableTracks,
+      columns: MeditationFields.values,
+      where: '${MeditationFields.id} = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Meditation.fromJson(maps.first);
+    } else {
+      throw Exception('$id not found');
     }
+  }
 
-    Future<int> updateMacro(Macro macro) async {
-      final db = await instance.database;
+  Future<List<Meditation>> getAllMeditations() async {
+    final db = await instance.database;
 
-      return db.update(tableMacro, macro.toJson(),
-          where: '${MacroFields.id} = ?', whereArgs: [macro.id]);
+    final result = await db.query(tableMeditation);
+
+    return result.map((json) => Meditation.fromJson(json)).toList();
+  }
+
+  Future<int> updateMeditation(Meditation meditation) async {
+    final db = await instance.database;
+
+    return db.update(tableMeditation, meditation.toJson(),
+        where: '${MeditationFields.id} = ?', whereArgs: [meditation.id]);
+  }
+
+  Future<int> deleteMeditation(int id) async {
+    final db = await instance.database;
+
+    return await db.delete(tableMeditation,
+        where: '${MeditationFields.id} = ?', whereArgs: [id]);
+  }
+
+  Future<void> deleteTableMeditation() async {
+    final db = await instance.database;
+    return await db.execute('DELETE FROM $tableMeditation');
+  }
+
+  //Running table
+
+  Future<Running> addRunning(Running running) async {
+    final db = await instance.database;
+    final id = await db.insert(tableRunning, running.toJson());
+    return running.copy(id: id);
+  }
+
+  Future<Running> getRunning(int id) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableRunning,
+      columns: RunningFields.values,
+      where: '${RunningFields.id} = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Running.fromJson(maps.first);
+    } else {
+      throw Exception('$id not found');
     }
+  }
 
-    Future<int> deleteMacro(int id) async {
-      final db = await instance.database;
+  Future<List<Running>> getAllRunning() async {
+    final db = await instance.database;
 
-      return await db
-          .delete(tableMacro, where: '${MacroFields.id} = ?', whereArgs: [id]);
+    final result = await db.query(tableRunning);
+
+    return result.map((json) => Running.fromJson(json)).toList();
+  }
+
+  Future<int> updateRunning(Running running) async {
+    final db = await instance.database;
+
+    return db.update(tableRunning, running.toJson(),
+        where: '${RunningFields.id} = ?', whereArgs: [running.id]);
+  }
+
+  Future<int> deleteRunning(int id) async {
+    final db = await instance.database;
+
+    return await db.delete(tableRunning,
+        where: '${RunningFields.id} = ?', whereArgs: [id]);
+  }
+
+  Future<void> deleteTableRunning() async {
+    final db = await instance.database;
+    return await db.execute('DELETE FROM $tableRunning');
+  }
+
+  //Macros
+
+  Future<Macro> addMacro(Macro macro) async {
+    final db = await instance.database;
+    final id = await db.insert(tableMacro, macro.toJson());
+    return macro.copy(id: id);
+  }
+
+  Future<Macro> getMacro(int id) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableMacro,
+      columns: MacroFields.values,
+      where: '${MacroFields.id} = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Macro.fromJson(maps.first);
+    } else {
+      throw Exception('$id not found');
     }
+  }
 
-    Future<void> deleteTableMacro() async {
-      final db = await instance.database;
-      return await db.execute('DELETE FROM $tableMacro');
-    }
+  Future<List<Macro>> getAllMacro() async {
+    final db = await instance.database;
+
+    final result = await db.query(tableMacro);
+
+    return result.map((json) => Macro.fromJson(json)).toList();
+  }
+
+  Future<int> updateMacro(Macro macro) async {
+    final db = await instance.database;
+
+    return db.update(tableMacro, macro.toJson(),
+        where: '${MacroFields.id} = ?', whereArgs: [macro.id]);
+  }
+
+  Future<int> deleteMacro(int id) async {
+    final db = await instance.database;
+
+    return await db
+        .delete(tableMacro, where: '${MacroFields.id} = ?', whereArgs: [id]);
+  }
+
+  Future<void> deleteTableMacro() async {
+    final db = await instance.database;
+    return await db.execute('DELETE FROM $tableMacro');
   }
 
   Future close() async {
