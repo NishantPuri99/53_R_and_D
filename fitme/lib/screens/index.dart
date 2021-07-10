@@ -3,7 +3,7 @@ import 'package:fitme/screens/meditation_screen.dart';
 import 'package:fitme/screens/physical_screen.dart';
 import 'package:flutter/material.dart';
 
-import './home_screen.dart';
+import 'dashboard_screen.dart';
 
 class Index extends StatefulWidget {
   static const routeName = '/index';
@@ -12,7 +12,7 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
-  int _currentIndex = 0;
+  int _currentIndex = 3;
 
   List<Widget> _screensList;
 
@@ -21,7 +21,7 @@ class _IndexState extends State<Index> {
     super.initState();
 
     _screensList = [
-      HomeScreen(),
+      DashboardScreen(),
       PhysicalScreen(),
       MeditationScreen(),
       DietScreen(),
@@ -37,14 +37,11 @@ class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
-        title: Text('Avengers Assemble'),
-      ),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screensList,
+      body: SafeArea(
+        child: IndexedStack(
+          index: _currentIndex,
+          children: _screensList,
+        ),
       ),
       bottomNavigationBar: Container(
         width: double.infinity,
@@ -62,7 +59,9 @@ class _IndexState extends State<Index> {
               child: Icon(
                 Icons.home,
                 size: 30,
-                color: _currentIndex == 0 ? Colors.pink[300] : Colors.grey[300],
+                color: _currentIndex == 0
+                    ? Colors.lightBlue[300]
+                    : Colors.grey[300],
               ),
             ),
             GestureDetector(
@@ -70,9 +69,11 @@ class _IndexState extends State<Index> {
                 changeScreen(1);
               },
               child: Icon(
-                Icons.search,
+                Icons.run_circle,
                 size: 30,
-                color: _currentIndex == 1 ? Colors.green : Colors.grey[300],
+                color: _currentIndex == 1
+                    ? Colors.lightBlue[300]
+                    : Colors.grey[300],
               ),
             ),
             GestureDetector(
@@ -80,9 +81,11 @@ class _IndexState extends State<Index> {
                 changeScreen(2);
               },
               child: Icon(
-                Icons.settings,
+                Icons.mediation_outlined,
                 size: 30,
-                color: _currentIndex == 2 ? Colors.green : Colors.grey[300],
+                color: _currentIndex == 2
+                    ? Colors.lightBlue[300]
+                    : Colors.grey[300],
               ),
             ),
             GestureDetector(
@@ -90,10 +93,11 @@ class _IndexState extends State<Index> {
                 changeScreen(3);
               },
               child: Icon(
-                Icons.person,
+                Icons.food_bank,
                 size: 30,
-                color:
-                    _currentIndex == 3 ? Colors.purple[300] : Colors.grey[300],
+                color: _currentIndex == 3
+                    ? Colors.lightBlue[300]
+                    : Colors.grey[300],
               ),
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:fitme/screens/class_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

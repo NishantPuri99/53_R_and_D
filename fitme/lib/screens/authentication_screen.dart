@@ -25,7 +25,6 @@ class AuthenticationScreen extends StatelessWidget {
                   Text(
                     'Sign In',
                     style: TextStyle(
-                      color: Colors.white,
                       fontSize: 20,
                     ),
                   ),
