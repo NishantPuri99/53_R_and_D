@@ -39,9 +39,6 @@ class MyApp extends StatelessWidget {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.black,
-        ),
         home: NavigatorScreen(),
       ),
     );

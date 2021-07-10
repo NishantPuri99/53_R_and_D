@@ -11,7 +11,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  get getAppUser {
+  AppUser get getAppUser {
     return _appUser;
   }
 

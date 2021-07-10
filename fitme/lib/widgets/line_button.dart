@@ -16,18 +16,18 @@ class LineButton extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
-        height: deviceHeight * 0.07,
+        height: 40,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(
             const Radius.circular(5.0),
           ),
           border: Border.all(
             width: 1.5,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
