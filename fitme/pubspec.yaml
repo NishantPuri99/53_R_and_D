@@ -23,25 +23,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-
-  device_preview: ^0.7.4
-  provider: ^5.0.0
-  firebase_core: ^1.3.0
-  google_sign_in: ^5.0.4
-  firebase_auth: ^2.0.0
-  cloud_firestore: ^2.3.0
-  lottie: ^1.1.0
   circular_countdown_timer: ^0.2.0
-  youtube_player_flutter: ^8.0.0
-  percent_indicator: ^3.0.1
-  google_maps_flutter: ^2.0.6
-  flutter_polyline_points: ^1.0.0
+  cloud_firestore: ^2.3.0
+  cupertino_icons: ^1.0.2
+  device_preview: ^0.7.4
   dio: ^4.0.0
+  draggable_bottom_sheet: ^0.1.2
+  firebase_auth: ^2.0.0
+  firebase_core: ^1.3.0
+  flutter_polyline_points: ^1.0.0
+  google_fonts: ^2.1.0
+  google_maps_flutter: ^2.0.6
+  google_sign_in: ^5.0.4
+  lottie: ^1.1.0
+  percent_indicator: ^3.0.1
+  provider: ^5.0.0
+  sqflite: ^2.0.0+3
+  syncfusion_flutter_charts: ^19.2.46+1
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +48,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -63,13 +61,10 @@ flutter:
     - assets/images/
     - assets/lotties/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
