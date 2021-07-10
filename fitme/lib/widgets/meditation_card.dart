@@ -1,11 +1,11 @@
 import 'package:fitme/screens/class_details_screen.dart';
 import 'package:flutter/material.dart';
 
-class WorkoutCard extends StatelessWidget {
+class MeditationCard extends StatelessWidget {
   final String source;
   final String title;
 
-  WorkoutCard({
+  MeditationCard({
     @required this.source,
     @required this.title,
   });

@@ -1,3 +1,4 @@
+import 'package:fitme/models/exercise.dart';
 import 'package:flutter/material.dart';
 
 class Diet extends StatelessWidget {
@@ -193,17 +194,6 @@ class ImageCardWithBasicFooter extends StatelessWidget {
       ],
     );
   }
-}
-
-class Exercise {
-  final String title, time, difficult, image;
-
-  Exercise({
-    @required this.title,
-    @required this.time,
-    @required this.difficult,
-    @required this.image,
-  });
 }
 
 List<Map> dishes = [

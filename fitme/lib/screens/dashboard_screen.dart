@@ -1,9 +1,12 @@
+import 'package:fitme/providers/auth_provider.dart';
 import 'package:fitme/services/authentication_services.dart';
 import 'package:fitme/widgets/action_card.dart';
 import 'package:fitme/widgets/stats.dart';
+import 'package:fitme/widgets/workout_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../widgets/workout_card.dart';
+import '../widgets/meditation_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
@@ -51,12 +54,16 @@ class DashboardScreen extends StatelessWidget {
                         fontSize: 20,
                       ),
                     ),
-                    Text(
-                      'D Ajay Kumar',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Consumer<AuthProvider>(
+                      builder: (_, authProvider, child) {
+                        return Text(
+                          authProvider.getAppUser.name,
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -84,15 +91,15 @@ class DashboardScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            WorkoutCard(
-              source: 'https://picsum.photos/200/300',
+            MeditationCard(
+              source: 'assets/images/meditation.jpg',
               title: 'Meditate',
             ),
             SizedBox(
               height: 10,
             ),
             WorkoutCard(
-              source: 'https://picsum.photos/200/300',
+              source: 'assets/images/jog.jpg',
               title: 'Run with Josh',
             ),
             SizedBox(
@@ -126,9 +133,9 @@ class DashboardScreen extends StatelessWidget {
                     width: 10,
                   ),
                   ActionCard(
-                    source: 'assets/images/stretching.jpg',
-                    time: 'Mon-Thu\n4:00PM',
-                    title: 'Stretch\nOut',
+                    source: 'assets/images/jog2.jpg',
+                    time: 'Mon-Thu\n6:00PM',
+                    title: 'Sweat\nIt',
                     description:
                         'Join the live classes for stretching exercises and more.',
                     startDate: '21-04-2021',
@@ -137,10 +144,10 @@ class DashboardScreen extends StatelessWidget {
                     width: 10,
                   ),
                   ActionCard(
-                    source: 'assets/images/stretching.jpg',
+                    source: 'assets/images/push_ups.jpg',
                     time: 'Mon-Thu\n4:00PM',
-                    title: 'Stretch\nOut',
-                    startDate: '21-04-2021',
+                    title: 'Calisthenics\nBurnout',
+                    startDate: '27-04-2021',
                     description:
                         'Join the live classes for stretching exercises and more.',
                   ),

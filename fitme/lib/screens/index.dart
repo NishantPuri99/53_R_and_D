@@ -1,6 +1,6 @@
 import 'package:fitme/screens/diet_screen.dart';
-import 'package:fitme/screens/meditation_screen.dart';
-import 'package:fitme/screens/physical_screen.dart';
+import 'package:fitme/screens/meditation_screen/meditation_screen.dart';
+import 'package:fitme/screens/physical_screen/physical_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'dashboard_screen.dart';

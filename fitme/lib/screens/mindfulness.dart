@@ -4,6 +4,10 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Mindfulness extends StatefulWidget {
+  final int minutes;
+
+  Mindfulness({@required this.minutes});
+
   @override
   _MindfulnessState createState() => _MindfulnessState();
 }
@@ -13,11 +17,9 @@ class _MindfulnessState extends State<Mindfulness> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     String videoID = YoutubePlayer.convertUrlToId(
         'https://www.youtube.com/watch?v=2OEL4P1Rz04');
-    print(videoID);
 
     ytController = YoutubePlayerController(
       initialVideoId: videoID,
@@ -43,6 +45,11 @@ class _MindfulnessState extends State<Mindfulness> {
             showVideoProgressIndicator: false,
           ),
           Container(
+            color: Colors.black,
+            height: double.infinity,
+            width: double.infinity,
+          ),
+          Container(
             height: double.infinity,
             child: Image.asset(
               'assets/images/candles.jpg',
@@ -53,7 +60,7 @@ class _MindfulnessState extends State<Mindfulness> {
             child: CircularCountDownTimer(
               width: 200,
               height: 200,
-              duration: 50,
+              duration: widget.minutes != null ? widget.minutes * 60 : 1800,
               textStyle: TextStyle(
                 fontSize: 30,
                 color: Colors.white,
@@ -61,9 +68,12 @@ class _MindfulnessState extends State<Mindfulness> {
               fillColor: Colors.red,
               autoStart: true,
               fillGradient: LinearGradient(
-                  colors: [Colors.red, Colors.amber, Colors.blue]),
+                  colors: [Colors.green, Colors.purple, Colors.blue]),
               strokeCap: StrokeCap.round,
-              ringColor: Colors.yellow,
+              ringColor: Colors.white,
+              onComplete: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],
