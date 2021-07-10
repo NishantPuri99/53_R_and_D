@@ -1,5 +1,6 @@
+import 'package:fitme/services/authentication_services.dart';
 import 'package:fitme/widgets/action_card.dart';
-import 'package:fitme/widgets/lottie_card.dart';
+import 'package:fitme/widgets/stats.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/workout_card.dart';
@@ -11,6 +12,7 @@ class DashboardScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Hamburger and Profile
             Row(
@@ -26,7 +28,9 @@ class DashboardScreen extends StatelessWidget {
 
                 // Profile
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AuthenticationServices().googleSignOut(context: context);
+                  },
                   icon: Icon(
                     Icons.person,
                   ),
@@ -59,6 +63,25 @@ class DashboardScreen extends StatelessWidget {
               ],
             ),
             SizedBox(
+              height: 30,
+            ),
+
+            // stats
+            Stats(),
+
+            SizedBox(
+              height: 30,
+            ),
+
+            Text(
+              'Classes',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            SizedBox(
               height: 10,
             ),
             WorkoutCard(
@@ -73,13 +96,19 @@ class DashboardScreen extends StatelessWidget {
               title: 'Run with Josh',
             ),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
 
+            Text(
+              'Upcoming Live Sessions',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
-
             Container(
               height: 320,
               child: ListView(
