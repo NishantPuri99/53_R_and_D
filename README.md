@@ -5,7 +5,7 @@
 
 ---
 
-<b>Project Name:</b> Make Me Fit
+<b>Project Name:</b> Fit.Me
 
 <b>Team Members:</b>
 <ol>
