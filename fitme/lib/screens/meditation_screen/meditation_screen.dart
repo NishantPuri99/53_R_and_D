@@ -1,3 +1,5 @@
+import 'package:fitme/screens/meditation_screen/meditation_classes.dart';
+import 'package:fitme/screens/meditation_screen/relax.dart';
 import 'package:fitme/widgets/header.dart';
 import 'package:fitme/widgets/tab_bar.dart';
 import 'package:flutter/material.dart';
@@ -48,12 +50,8 @@ class MeditationScreen extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  Center(
-                    child: Text('Body'),
-                  ),
-                  Center(
-                    child: Text('Body'),
-                  ),
+                  Relax(),
+                  MeditationClasses(),
                   Center(
                     child: Text('Body'),
                   ),

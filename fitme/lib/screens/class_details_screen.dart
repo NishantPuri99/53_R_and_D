@@ -1,8 +1,14 @@
+import 'package:fitme/constants.dart';
+import 'package:fitme/screens/mindfulness.dart';
 import 'package:fitme/widgets/filled_button.dart';
+import 'package:fitme/widgets/line_button.dart';
+import 'package:fitme/widgets/meditation_card.dart';
 import 'package:fitme/widgets/workout_card.dart';
 import 'package:flutter/material.dart';
 
 class ClassDetailsScreen extends StatelessWidget {
+  final TextEditingController minutesController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,17 +20,9 @@ class ClassDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 WorkoutCard(
-                  source: 'https://picsum.photos/200/300',
+                  source: 'assets/images/meditation2.jpg',
                   title: 'Meditate',
                 ),
-                // ActionCard(
-                //   source: 'assets/images/stretching.jpg',
-                //   title: 'Stretch\nOut',
-                //   description:
-                //       'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                //   startDate: '21-04-2021',
-                //   time: 'Mon-Thu\n4:00PM',
-                // ),
                 SizedBox(
                   height: 10,
                 ),
@@ -65,7 +63,47 @@ class ClassDetailsScreen extends StatelessWidget {
                 FilledButton(
                   title: 'JOIN',
                   color: Colors.lightBlue[300],
-                  onTap: () {},
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) {
+                        return AlertDialog(
+                          title: Text('Enter the duration'),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              TextFormField(
+                                controller: minutesController,
+                                decoration: inputDecoration.copyWith(
+                                  labelText: 'Duration in minutes',
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              LineButton(
+                                title: 'JOIN',
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) {
+                                        return Mindfulness(
+                                          minutes:
+                                              int.parse(minutesController.text),
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),

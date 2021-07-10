@@ -18,38 +18,40 @@ class LottieCard extends StatelessWidget {
           const Radius.circular(10.0),
         ),
       ),
-      child: Stack(children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 10,
-            left: 10,
-          ),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 40,
+              left: 40,
+              right: 10,
+              bottom: 10,
+            ),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Lottie.asset(
+                source,
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 40,
-            left: 40,
-            right: 10,
-            bottom: 10,
-          ),
-          child: Align(
-            alignment: Alignment.bottomRight,
-            child: Lottie.asset(
-              source,
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 10,
+              left: 10,
+            ),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }

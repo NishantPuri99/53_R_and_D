@@ -1,3 +1,5 @@
+import 'package:fitme/screens/physical_screen/physical_classes.dart';
+import 'package:fitme/screens/physical_screen/workout.dart';
 import 'package:fitme/widgets/header.dart';
 import 'package:flutter/material.dart';
 
@@ -47,12 +49,8 @@ class PhysicalScreen extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  Center(
-                    child: Text('Body'),
-                  ),
-                  Center(
-                    child: Text('Body'),
-                  ),
+                  Workout(),
+                  PhysicalClasses(),
                   Center(
                     child: Text('Body'),
                   ),
