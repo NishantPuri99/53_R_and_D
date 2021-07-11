@@ -1,6 +1,9 @@
+import 'package:fitme/models/appUser.dart';
 import 'package:fitme/providers/auth_provider.dart';
+import 'package:fitme/screens/additional_details_screen.dart';
 import 'package:fitme/services/authentication_services.dart';
 import 'package:fitme/widgets/action_card.dart';
+import 'package:fitme/widgets/filled_button.dart';
 import 'package:fitme/widgets/stats.dart';
 import 'package:fitme/widgets/workout_card.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +11,48 @@ import 'package:provider/provider.dart';
 
 import '../widgets/meditation_card.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
+  @override
+  _DashboardScreenState createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    super.initState();
+    final AppUser user =
+        Provider.of<AuthProvider>(context, listen: false).getAppUser;
+    if (user.weight == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await showDialog(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text('Welcome to the App'),
+              content: Text('Let\'s quickly fill up some details'),
+              actions: [
+                FilledButton(
+                    title: 'Let\'s Go',
+                    color: Colors.lightBlue,
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) {
+                            return AdditionalDetailsScreen();
+                          },
+                        ),
+                      );
+                    })
+              ],
+            );
+          },
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,9 +67,18 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 // Hamburger
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return AdditionalDetailsScreen();
+                        },
+                      ),
+                    );
+                  },
                   icon: Icon(
-                    Icons.apps,
+                    Icons.person,
                   ),
                 ),
 
@@ -35,7 +88,7 @@ class DashboardScreen extends StatelessWidget {
                     AuthenticationServices().googleSignOut(context: context);
                   },
                   icon: Icon(
-                    Icons.person,
+                    Icons.logout,
                   ),
                 ),
               ],

@@ -15,8 +15,8 @@ class AdditionalDetailsScreen extends StatefulWidget {
 
 class _AdditionalDetailsScreenState extends State<AdditionalDetailsScreen> {
   Future<void> saveUser() async {
-    AppUser authProvider =
-        Provider.of<AuthProvider>(context, listen: false).getAppUser;
+    AuthProvider prov = Provider.of<AuthProvider>(context, listen: false);
+    AppUser authProvider = prov.getAppUser;
 
     AppUser appUser = AppUser(
       uid: authProvider.uid,
@@ -29,6 +29,7 @@ class _AdditionalDetailsScreenState extends State<AdditionalDetailsScreen> {
       gender: selectedGender,
     );
 
+    prov.setAppUser = appUser;
     await FirestoreServices().uploadUserData(appUser: appUser);
   }
 
@@ -192,30 +193,13 @@ class _AdditionalDetailsScreenState extends State<AdditionalDetailsScreen> {
                   ),
 
                   // Button here
-                  Row(
-                    children: [
-                      Expanded(
-                        child: LineButton(
-                          title: 'Skip',
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: FilledButton(
-                          color: Colors.black,
-                          title: 'Next',
-                          onTap: () async {
-                            await saveUser();
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ),
-                    ],
+                  FilledButton(
+                    color: Colors.black,
+                    title: 'Next',
+                    onTap: () async {
+                      await saveUser();
+                      Navigator.pop(context);
+                    },
                   ),
 
                   const SizedBox(

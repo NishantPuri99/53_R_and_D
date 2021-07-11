@@ -12,7 +12,7 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
-  int _currentIndex = 3;
+  int _currentIndex = 0;
 
   List<Widget> _screensList;
 
