@@ -1,3 +1,5 @@
+import 'package:fitme/providers/location_provider.dart';
+import 'package:fitme/screens/google_maps/google_map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,7 +23,7 @@ Future<void> main() async {
   runApp(
     DevicePreview(
       // to check the UI on different devices make enabled true
-      enabled: true,
+      enabled: false,
       builder: (context) => MyApp(),
     ),
   );
@@ -34,6 +36,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => LocationProvider(),
+          child: GoogleMapScreen(),
+        )
       ],
       child: MaterialApp(
         locale: DevicePreview.locale(context),
