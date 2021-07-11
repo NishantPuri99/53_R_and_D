@@ -1,3 +1,4 @@
+import 'package:fitme/databases/data.dart';
 import 'package:fitme/widgets/action_tile.dart';
 import 'package:fitme/widgets/meditation_card.dart';
 import 'package:fitme/widgets/workout_card.dart';
@@ -9,31 +10,6 @@ class Relax extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Garden Meditation',
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Beach Meditation',
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Calm Meditation',
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Rain Meditation',
-          // ),
           Column(
             children: [
               Row(
@@ -45,37 +21,17 @@ class Relax extends StatelessWidget {
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
+                      nextStep: nextStepss[0],
                     ),
                   ),
                   Expanded(
                     child: ActionTile(
-                      name: 'Yoga',
-                      imageUrl: 'assets/images/yoga.jpg',
+                      name: 'Breathing',
+                      imageUrl: 'assets/images/breathing.jpg',
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: ActionTile(
-                      name: 'Yoga',
-                      imageUrl: 'assets/images/yoga.jpg',
-                      rating: '4.5',
-                      numberOfRating: '300',
-                      price: '200',
-                    ),
-                  ),
-                  Expanded(
-                    child: ActionTile(
-                      name: 'Yoga',
-                      imageUrl: 'assets/images/yoga.jpg',
-                      rating: '4.5',
-                      numberOfRating: '300',
-                      price: '200',
+                      nextStep: nextStepss[0],
                     ),
                   ),
                 ],
@@ -84,20 +40,22 @@ class Relax extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ActionTile(
-                      name: 'Yoga',
-                      imageUrl: 'assets/images/yoga.jpg',
+                      name: 'Relaxing',
+                      imageUrl: 'assets/images/relaxing.jpg',
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
+                      nextStep: nextStepss[0],
                     ),
                   ),
                   Expanded(
                     child: ActionTile(
-                      name: 'Yoga',
-                      imageUrl: 'assets/images/yoga.jpg',
+                      name: 'Unwinding',
+                      imageUrl: 'assets/images/unwinding.jpg',
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
+                      nextStep: nextStepss[0],
                     ),
                   ),
                 ],

@@ -8,6 +8,17 @@ import 'package:flutter/material.dart';
 
 class ClassDetailsScreen extends StatelessWidget {
   final TextEditingController minutesController = TextEditingController();
+  final String description;
+  final String title;
+  final String instructor;
+  final String image;
+
+  ClassDetailsScreen({
+    @required this.title,
+    @required this.description,
+    @required this.instructor,
+    @required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +31,16 @@ class ClassDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 WorkoutCard(
-                  source: 'assets/images/meditation2.jpg',
-                  title: 'Meditate',
+                  source: image,
+                  title: title,
+                  descitpion: description,
+                  instructor: instructor,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'Yoga by the Ocean',
+                  title,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -37,7 +50,7 @@ class ClassDetailsScreen extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\nlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                  description,
                   style: TextStyle(),
                 ),
                 SizedBox(
@@ -54,7 +67,7 @@ class ClassDetailsScreen extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'MS Dhoni',
+                  instructor,
                   style: TextStyle(),
                 ),
                 SizedBox(

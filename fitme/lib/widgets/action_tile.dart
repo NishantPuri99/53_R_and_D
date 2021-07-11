@@ -1,5 +1,6 @@
 import 'package:fitme/models/exercise.dart';
 import 'package:fitme/screens/physical_screen/physical_track.dart';
+import 'package:fitme/widgets/next_step.dart';
 import 'package:flutter/material.dart';
 
 class ActionTile extends StatelessWidget {
@@ -8,6 +9,7 @@ class ActionTile extends StatelessWidget {
   final String rating;
   final String numberOfRating;
   final String price;
+  final List<NextStep> nextStep;
 
   ActionTile({
     @required this.name,
@@ -15,6 +17,7 @@ class ActionTile extends StatelessWidget {
     @required this.rating,
     @required this.numberOfRating,
     @required this.price,
+    @required this.nextStep,
   });
 
   final Exercise exercise = Exercise(
@@ -34,6 +37,7 @@ class ActionTile extends StatelessWidget {
             builder: (_) {
               return PhysicalTrack(
                 exercise: exercise,
+                nextStep: nextStep,
               );
             },
           ),
@@ -89,11 +93,13 @@ class ActionTile extends StatelessWidget {
                           ),
                           Align(
                             alignment: Alignment.centerLeft,
-                            child: Center(
+                            child: Container(
+                                height: 150,
+                                width: 200,
                                 child: Image.asset(
-                              imageUrl,
-                              fit: BoxFit.cover,
-                            )),
+                                  imageUrl,
+                                  fit: BoxFit.cover,
+                                )),
                           )
                         ],
                       ),
