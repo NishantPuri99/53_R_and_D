@@ -1,4 +1,5 @@
 import 'package:fitme/providers/location_provider.dart';
+import 'package:fitme/providers/track_provider.dart';
 import 'package:fitme/screens/google_maps/google_map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,6 +40,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => LocationProvider(),
           child: GoogleMapScreen(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TrackProvider(),
         )
       ],
       child: MaterialApp(

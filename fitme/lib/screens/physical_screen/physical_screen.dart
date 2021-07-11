@@ -1,3 +1,4 @@
+import 'package:fitme/screens/google_maps/start_track_screen.dart';
 import 'package:fitme/screens/physical_screen/physical_classes.dart';
 import 'package:fitme/screens/physical_screen/workout.dart';
 import 'package:fitme/widgets/header.dart';
@@ -12,7 +13,38 @@ class PhysicalScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            Header('Physical'),
+            Header(
+              'Physical',
+              rightSide: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) {
+                        return StartTrackScreen();
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 35.0,
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Tracker',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             TabBar(
               tabs: <Widget>[
                 Container(
