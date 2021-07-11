@@ -112,6 +112,30 @@ class PhysicalTrack extends StatelessWidget {
                           title: 'Lateral Raise',
                           seconds: 50,
                         ),
+                        NextStep(
+                            image: 'assets/image/squat.jpg',
+                            title: 'Squats',
+                            seconds: 50),
+                        NextStep(
+                            image: 'assets/image/lunges.jpg',
+                            title: 'Lunges',
+                            seconds: 50),
+                        NextStep(
+                            image: 'assets/image/jumpingjacks.jpg',
+                            title: 'Jumping Jacks',
+                            seconds: 50),
+                        NextStep(
+                            image: 'assets/image/burpee.jpg',
+                            title: 'Burpees',
+                            seconds: 50),
+                        NextStep(
+                            image: 'assets/image/situp.jpg',
+                            title: 'Sit Ups',
+                            seconds: 50),
+                        NextStep(
+                            image: 'assets/image/crunch.jpg',
+                            title: 'Crunches',
+                            seconds: 50),
                       ],
                     ),
                   ),

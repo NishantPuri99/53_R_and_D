@@ -8,6 +8,10 @@ class PhysicalClasses extends StatelessWidget {
       child: Column(
         children: [
           MeditationCard(
+            source: 'assets/images/walktrack.jpg',
+            title: 'Basic stretches and brisk walking',
+          ),
+          MeditationCard(
             source: 'assets/images/jog.jpg',
             title: 'Jog with Josh',
           ),
