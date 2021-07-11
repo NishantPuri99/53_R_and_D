@@ -28,4 +28,6 @@ Build an app that motivates people to improve mental, physical health, and monit
 Link to Our Kanban / Project Management Board:
 <a href="https://trello.com/invite/b/esA4No5N/7c633ebc922e882af2d7eb5cc61805a1/hackothsav-kanban-board">Kanban for Team 53</a>
 
- 
+---
+
+The End Point portion (With Python-Flask) has been deployed to heroku in a separate repository

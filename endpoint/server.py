@@ -14,6 +14,38 @@ db=firestore.client()
 
 dbCol = db.collection(u'users')
 
+leaderDict = {}
+
+def updateLeaderBoardForUser(jsonData,deleteUser):
+    if(deleteUser==True):
+        del leaderDict[jsonData['userID']]
+    else:
+        print(jsonData)
+        print(leaderDict)
+        if(jsonData['userID'] not in leaderDict.keys()):
+            print('hi')
+            leaderDict[jsonData['userID']] = {'targetDistance_km': jsonData['distance_km'], 'timeSpent_mins': jsonData['time_mins'], 'timestamp':datetime.now().timestamp()}
+            print(leaderDict)
+        else:
+            print('here')
+            print(leaderDict)
+            if(jsonData['distance_km'] == leaderDict[jsonData['userID']]['targetDistance_km']):
+                if(jsonData['time_mins'] <= leaderDict[jsonData['userID']]['timeSpent_mins']):
+                    leaderDict[jsonData['userID']]['timeSpent_mins'] = jsonData['time_mins']
+                    leaderDict[jsonData['userID']]['timestamp'] = datetime.now().timestamp()
+
+            else:
+                s1 = float(jsonData['distance_km']/jsonData['time_mins'])
+                s2 = float(leaderDict[jsonData['userID']]['targetDistance_km']/leaderDict[jsonData['userID']]['timeSpent_mins'])
+                if(s1>=s2):
+                    leaderDict[jsonData['userID']]['targetDistance_km'] = jsonData['distance_km']
+                    leaderDict[jsonData['userID']]['timeSpent_mins'] = jsonData['time_mins']
+                    leaderDict[jsonData['userID']]['timestamp'] = datetime.now().timestamp()
+
+            print(leaderDict)
+    
+
+
 @app.route("/",methods=['POST'])
 def createUser():
     jsonData = json.loads(request.get_data())
@@ -35,6 +67,7 @@ def deleteDb():
         for item in result.to_dict().items():
             if(item[0] == 'userID' and item[1] == int(jsonData['userID_param'])):
                 query.delete()
+                updateLeaderBoardForUser(jsonData,True)
                 return f"Deleted entry with user id {jsonData['userID_param']}"
         return "Data Not Present"
     else:
@@ -47,9 +80,11 @@ def updateDb():
     query = dbCol.document(u'user{0}'.format(jsonData['userID']))
     result = query.get()
     if(request.method=='POST'):
-        for item in result.to_dict().items():
-            if(item[0] == 'userID' and item[1] == int(jsonData['userID'])):
-                query.update({'activityID': jsonData['activityID'], 'targetDistance': jsonData['distance'], 'timeSpent': jsonData['time'], 'timestamp':datetime.now().timestamp(), 'userID': jsonData['userID']})
+        for k,v in result.to_dict().items():
+            print(jsonData)
+            if(k==f"activity{jsonData['activityID']}" and v["userID"]==jsonData['userID']):
+                updateLeaderBoardForUser(jsonData,False)
+                query.update({f"activity{jsonData['activityID']}":{'targetDistance_km': jsonData['distance_km'], 'timeSpent_mins': jsonData['time_mins'], 'timestamp':datetime.now().timestamp(), 'userID': jsonData['userID']}})
                 return f"Updated entry with user id {jsonData['userID']}"
         return "Data Not Present"
     else:
@@ -59,9 +94,13 @@ def updateDb():
 def addToDb():
     jsonData = json.loads(request.get_data())
     if(request.method=='POST'):
-        dbCol.document(u'user{0}'.format(jsonData['userID'])).update({f"activity{jsonData['activityID']}":{'targetDistance': jsonData['distance'], 'timeSpent': jsonData['time'], 'timestamp':datetime.now().timestamp(), 'userID': jsonData['userID']}})
+        updateLeaderBoardForUser(jsonData,False)
+        dbCol.document(u'user{0}'.format(jsonData['userID'])).update({f"activity{jsonData['activityID']}":{'targetDistance_km': jsonData['distance_km'], 'timeSpent_mins': jsonData['time_mins'], 'timestamp':datetime.now().timestamp(), 'userID': jsonData['userID']}})
     return "Added Succefully"
 
+@app.route("/leaderboard")
+def leaderboard():
+    return leaderDict
 
 if __name__ == "__main__":
   app.run(debug=True)
