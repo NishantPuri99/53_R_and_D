@@ -1,5 +1,6 @@
 import 'package:fitme/screens/google_maps/start_track_screen.dart';
 import 'package:fitme/screens/physical_screen/physical_classes.dart';
+import 'package:fitme/screens/physical_screen/run_activity.dart';
 import 'package:fitme/screens/physical_screen/workout.dart';
 import 'package:fitme/widgets/header.dart';
 import 'package:flutter/material.dart';
@@ -87,20 +88,8 @@ class PhysicalScreen extends StatelessWidget {
                     child: Text('Body'),
                   ),
                   Center(
-                    child: Text('Body'),
+                    child: RunAct(),
                   ),
-                  // TabViewBase(
-                  //   tabName: 'Breakfast',
-                  // ),
-                  // TabViewBase(
-                  //   tabName: 'Lunch',
-                  // ),
-                  // TabViewBase(
-                  //   tabName: 'Dinner',
-                  // ),
-                  // TabViewBase(
-                  //   tabName: 'Snacks',
-                  // ),
                 ],
               ),
             ),
