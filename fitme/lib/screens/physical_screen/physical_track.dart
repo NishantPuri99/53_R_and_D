@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 
 class PhysicalTrack extends StatelessWidget {
   final Exercise exercise;
+  final List<NextStep> nextStep;
 
   PhysicalTrack({
     @required this.exercise,
+    @required this.nextStep,
   });
 
   @override
@@ -96,47 +98,7 @@ class PhysicalTrack extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(top: 15.0),
                     child: Column(
-                      children: <Widget>[
-                        NextStep(
-                          image: 'assets/images/image005.jpg',
-                          title: 'Plank',
-                          seconds: 50,
-                        ),
-                        NextStep(
-                          image: 'assets/images/image006.jpg',
-                          title: 'Push-ups',
-                          seconds: 50,
-                        ),
-                        NextStep(
-                          image: 'assets/images/image007.jpg',
-                          title: 'Lateral Raise',
-                          seconds: 50,
-                        ),
-                        NextStep(
-                            image: 'assets/image/squat.jpg',
-                            title: 'Squats',
-                            seconds: 50),
-                        NextStep(
-                            image: 'assets/image/lunges.jpg',
-                            title: 'Lunges',
-                            seconds: 50),
-                        NextStep(
-                            image: 'assets/image/jumpingjacks.jpg',
-                            title: 'Jumping Jacks',
-                            seconds: 50),
-                        NextStep(
-                            image: 'assets/image/burpee.jpg',
-                            title: 'Burpees',
-                            seconds: 50),
-                        NextStep(
-                            image: 'assets/image/situp.jpg',
-                            title: 'Sit Ups',
-                            seconds: 50),
-                        NextStep(
-                            image: 'assets/image/crunch.jpg',
-                            title: 'Crunches',
-                            seconds: 50),
-                      ],
+                      children: nextStep,
                     ),
                   ),
                 ],
@@ -182,3 +144,7 @@ class PhysicalTrack extends StatelessWidget {
     );
   }
 }
+
+// core
+
+// legs

@@ -1,3 +1,4 @@
+import 'package:fitme/databases/data.dart';
 import 'package:fitme/widgets/action_tile.dart';
 import 'package:fitme/widgets/meditation_card.dart';
 import 'package:fitme/widgets/workout_card.dart';
@@ -9,31 +10,6 @@ class Workout extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Garden Meditation',
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Beach Meditation',
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Calm Meditation',
-          // ),
-          // SizedBox(
-          //   height: 20,
-          // ),
-          // MeditationCard(
-          //   source: 'assets/images/meditation2.jpg',
-          //   title: 'Rain Meditation',
-          // ),
           Column(
             children: [
               Row(
@@ -45,37 +21,17 @@ class Workout extends StatelessWidget {
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
+                      nextStep: nextStepss[0],
                     ),
                   ),
                   Expanded(
                     child: ActionTile(
-                      name: 'Chest',
-                      imageUrl: 'assets/images/push_ups.jpg',
+                      name: 'Legs',
+                      imageUrl: 'assets/images/legs.jpg',
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: ActionTile(
-                      name: 'Chest',
-                      imageUrl: 'assets/images/push_ups.jpg',
-                      rating: '4.5',
-                      numberOfRating: '300',
-                      price: '200',
-                    ),
-                  ),
-                  Expanded(
-                    child: ActionTile(
-                      name: 'Chest',
-                      imageUrl: 'assets/images/push_ups.jpg',
-                      rating: '4.5',
-                      numberOfRating: '300',
-                      price: '200',
+                      nextStep: nextStepss[1],
                     ),
                   ),
                 ],
@@ -84,27 +40,28 @@ class Workout extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ActionTile(
-                      name: 'Chest',
-                      imageUrl: 'assets/images/push_ups.jpg',
+                      name: 'Core',
+                      imageUrl: 'assets/images/core.jpg',
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
+                      nextStep: nextStepss[2],
                     ),
                   ),
                   Expanded(
                     child: ActionTile(
-                      name: 'Chest',
-                      imageUrl: 'assets/images/push_ups.jpg',
+                      name: 'Arms',
+                      imageUrl: 'assets/images/arms.jpg',
                       rating: '4.5',
                       numberOfRating: '300',
                       price: '200',
+                      nextStep: nextStepss[0],
                     ),
                   ),
                 ],
               ),
             ],
           ),
-
           SizedBox(
             height: 20,
           ),

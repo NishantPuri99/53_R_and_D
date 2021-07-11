@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 class MeditationCard extends StatelessWidget {
   final String source;
   final String title;
+  final String descitpion;
+  final String instructor;
 
   MeditationCard({
     @required this.source,
     @required this.title,
+    @required this.descitpion,
+    @required this.instructor,
   });
 
   @override
@@ -18,7 +22,12 @@ class MeditationCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (_) {
-              return ClassDetailsScreen();
+              return ClassDetailsScreen(
+                title: title,
+                image: source,
+                description: descitpion,
+                instructor: instructor,
+              );
             },
           ),
         );

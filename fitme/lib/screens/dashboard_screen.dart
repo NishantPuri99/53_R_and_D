@@ -147,6 +147,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
             MeditationCard(
               source: 'assets/images/meditation.jpg',
               title: 'Meditate',
+              descitpion:
+                  'Get rid of all the stress you have in life, blend in with nature and explore a world of peacefulness and calmness. Join me and learn how to lead a life full of joy and laughter.',
+              instructor: 'R Madhavi',
             ),
             SizedBox(
               height: 10,
@@ -154,6 +157,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
             WorkoutCard(
               source: 'assets/images/jog.jpg',
               title: 'Run with Josh',
+              descitpion:
+                  'Get rid of all the stress you have in life, blend in with nature and explore a world of peacefulness and calmness. Join me and learn how to lead a life full of joy and laughter.',
+              instructor: 'Josh Halucino',
             ),
             SizedBox(
               height: 30,
