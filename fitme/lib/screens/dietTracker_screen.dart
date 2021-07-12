@@ -21,7 +21,7 @@ List<String> macros = ['0', '0', '0', '0'];
 List<String> attributes = ['Calories', 'Proteins', 'Carbs', 'Fats'];
 String searchFor;
 int searchForLength;
-List<Macro> dbMacros;
+List<Macro> dbMacros = [];
 List<ChartData> chartData = [
   ChartData('Proteins', 11),
   ChartData('Carbohydrates', 21),
@@ -45,8 +45,7 @@ class _DietTrackerScreenState extends State<DietTrackerScreen> {
       Icons.format_line_spacing
     ];
 
-    return Scaffold(
-        body: DraggableBottomSheet(
+    return DraggableBottomSheet(
       backgroundWidget: Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -284,7 +283,7 @@ class _DietTrackerScreenState extends State<DietTrackerScreen> {
       ),
       minExtent: 75,
       maxExtent: MediaQuery.of(context).size.height,
-    ));
+    );
   }
 
   void search() async {
