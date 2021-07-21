@@ -1,14 +1,13 @@
-from flask import Flask, request, json, redirect
+from flask import Flask, config, request, json
 import firebase_admin
 from firebase_admin import credentials,firestore
 from datetime import datetime
-
-from flask.sessions import NullSession
-
+import os
 
 app = Flask(__name__)
+c = {} #Fill Dictionary with credentials from Firestore
 
-cred = credentials.Certificate("key.json")
+cred = credentials.Certificate(c)
 firebase_admin.initialize_app(cred)
 db=firestore.client()
 
@@ -46,11 +45,14 @@ def updateLeaderBoardForUser(jsonData,deleteUser):
     
 
 
-@app.route("/",methods=['POST'])
+@app.route("/",methods=['GET','POST'])
 def createUser():
-    jsonData = json.loads(request.get_data())
-    dbCol.document(u'user{0}'.format(jsonData['userID'])).set({'dateOfCreation':datetime.now().timestamp()})
-    return "User Created"
+    if(request.method=='GET'):
+        return "This URL is an API ENDPOINT ONLY"
+    else:
+        jsonData = json.loads(request.get_data())
+        dbCol.document(u'user{0}'.format(jsonData['userID'])).set({'dateOfCreation':datetime.now().timestamp()})
+        return "User Created"
 
 @app.route("/get-scores/<userID>",methods=["GET"])
 def getDbData(userID):
@@ -101,6 +103,3 @@ def addToDb():
 @app.route("/leaderboard")
 def leaderboard():
     return leaderDict
-
-if __name__ == "__main__":
-  app.run(debug=True)
